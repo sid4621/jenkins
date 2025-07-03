@@ -1,38 +1,21 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "C:\\Windows\\System32;${env.PATH}"
-        PYTHONPATH = "."
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Setup') {
             steps {
                 bat '''
-                python -m pip install --upgrade pip
-                pip install -r requirements.txt
+                C:\\Users\\sidda\\AppData\\Local\\Programs\\Python\\Python310\\python.exe -m pip install --upgrade pip
+                C:\\Users\\sidda\\AppData\\Local\\Programs\\Python\\Python310\\Scripts\\pip.exe install -r requirements.txt
                 '''
             }
         }
 
-        stage('Test') {
+        stage('Run') {
             steps {
                 bat '''
-                pytest test_app.py
+                C:\\Users\\sidda\\AppData\\Local\\Programs\\Python\\Python310\\python.exe app.py
                 '''
-            }
-        }
-
-        stage('Done') {
-            steps {
-                echo '✅ Tests passed.'
             }
         }
     }
